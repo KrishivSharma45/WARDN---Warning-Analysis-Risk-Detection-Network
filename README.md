@@ -1,186 +1,104 @@
 # 🛡️ ScamShield AI
 
-### AI-Powered Email Threat Detection & Scam Intelligence Platform
+### AI-Powered Email Security & Phishing Detection Platform
 
-> **ScamShield AI** is a security-focused platform that connects with Gmail, synchronizes emails, analyzes potentially malicious content, and transforms suspicious messages into actionable security intelligence.
+<p align="center">
+  ScamShield AI connects to Gmail and analyzes incoming emails for phishing,
+  scams, suspicious links, and social-engineering threats.
+</p>
 
-ScamShield AI is designed to make email security easier to understand by combining **Gmail integration, automated email analysis, threat classification, risk scoring, and security-focused visualization** into a single dashboard.
-
----
-
-## 🚨 Why ScamShield AI?
-
-Email remains one of the most common entry points for phishing, social engineering, credential theft, malicious links, and online scams.
-
-Traditional inboxes are excellent at delivering emails — but they are not designed to give users a complete security analysis of every suspicious message.
-
-ScamShield AI approaches the problem differently:
-
-**Email → Analysis → Threat Intelligence → Risk Assessment → Actionable Insight**
-
-Instead of simply asking:
-
-> "Is this email suspicious?"
-
-ScamShield aims to help answer:
-
-- What makes this email suspicious?
-- What type of threat could it represent?
-- How risky is it?
-- What indicators should the user pay attention to?
-- What security patterns are appearing across the inbox?
+<p align="center">
+  <a href="#-overview">Overview</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-how-it-works">How It Works</a> •
+  <a href="#-tech-stack">Tech Stack</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-security--privacy">Security</a> •
+  <a href="#-future-improvements">Roadmap</a>
+</p>
 
 ---
 
-# ✨ Core Features
+## 🧭 Overview
 
-## 📧 Gmail Integration
+ScamShield AI is a cybersecurity platform that adds a security layer to your Gmail inbox.
 
-ScamShield AI integrates with Gmail through OAuth-based authentication.
-
-The application can:
-
-- Authenticate a Gmail account securely
-- Synchronize emails
-- Retrieve email information for analysis
-- Display synchronized messages inside the application
-- Process emails through the threat-analysis workflow
-
-OAuth credentials and access tokens are intentionally excluded from version control.
+It uses Gmail's read-only OAuth integration to import emails and analyze them for phishing, scams, suspicious links, social engineering, and other threat signals.
 
 ---
 
-## 🤖 AI-Assisted Email Analysis
+## ✨ Features
 
-Emails can be analyzed for potentially suspicious characteristics and security indicators.
+### 📧 Gmail Integration
+- Google OAuth 2.0
+- Read-only Gmail access
+- Real inbox synchronization
+- Manual Gmail sync
 
-The analysis workflow is designed to identify signals associated with threats such as:
+### 🔍 Threat Detection
+- Phishing detection
+- Scam detection
+- Suspicious link identification
+- Social-engineering indicators
+- Account takeover signals
+- Financial request detection
 
-- Phishing
-- Scam attempts
-- Suspicious requests
-- Social engineering
-- Malicious links
-- Credential-related attacks
-- Other potentially dangerous email patterns
+### 🎯 Risk Scoring
+Every email receives a **0–100 security risk score** and is classified as:
 
-The goal is not simply to label an email.
+- 🟢 Safe
+- 🟡 Suspicious
+- 🟠 High Risk
+- 🔴 Critical
 
-ScamShield turns analysis into **security intelligence that a user can understand.**
+### 🧠 Security Analysis
+Each email provides:
+- Risk score
+- Severity
+- Threat category
+- Confidence
+- Threat indicators
+- Security explanation
 
----
+### 📊 Security Dashboard
+- Protection score
+- Emails scanned
+- Suspicious emails
+- Threats detected
+- Recent threats
+- Overall inbox security
 
-## 🎯 Risk & Threat Assessment
-
-ScamShield provides security-oriented indicators that help users understand the potential severity of an email.
-
-The dashboard can surface information such as:
-
-- Threat level
-- Risk indicators
-- Suspicious patterns
-- Security findings
-- Email classification
-- Analysis results
-
-This makes complex security analysis easier to interpret.
-
----
-
-## 📊 Security Dashboard
-
-The application provides a dedicated security dashboard for viewing the overall state of the inbox.
-
-The interface includes security-focused components such as:
-
-- Risk indicators
-- Security scores
-- Threat summaries
-- Email analysis
-- Security reports
-- Threat intelligence views
-
----
-
-## 📥 Intelligent Inbox
-
-The Inbox experience is designed around security rather than simply displaying messages.
-
-Users can inspect synchronized emails and access their corresponding security analysis.
-
-This creates a workflow where:
-
-**Inbox → Investigate → Analyze → Understand → Respond**
+### 📬 Email Investigation
+Open an email to inspect:
+- Sender information
+- Email content
+- Risk assessment
+- Detected threats
+- Security intelligence
+- Embedded email preview
 
 ---
 
-## 🧠 AI Analysis Drawer
-
-ScamShield includes an AI-focused analysis interface that allows users to inspect the reasoning and findings associated with an analyzed email.
-
-Instead of overwhelming users with raw technical information, the interface presents security insights in a structured format.
-
----
-
-## 🛡️ Threat Center
-
-The Threat Center provides a centralized view of potentially dangerous activity.
-
-It is designed to help users understand:
-
-- What threats have been detected
-- Which emails require attention
-- What patterns are appearing
-- Which security indicators matter most
-
----
-
-## 📈 Security Reports
-
-ScamShield includes a reporting-oriented section for viewing security analysis and threat information in a more structured manner.
-
-This can help transform individual email findings into a broader understanding of inbox security.
-
----
-
-# 🏗️ Architecture
-
-ScamShield AI follows a frontend + backend architecture.
+## ⚙️ How It Works
 
 ```text
-                         ┌─────────────────────┐
-                         │       Gmail         │
-                         │      Account        │
-                         └──────────┬──────────┘
-                                    │
-                              OAuth / API
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │      Backend        │
-                         │     API Layer       │
-                         └──────────┬──────────┘
-                                    │
-                           Email Synchronization
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │  Threat Analysis   │
-                         │       Engine        │
-                         └──────────┬──────────┘
-                                    │
-                           Security Intelligence
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │      Frontend       │
-                         │   Security Console  │
-                         └─────────────────────┘
-                                    │
-                  ┌─────────────────┼─────────────────┐
-                  ▼                 ▼                 ▼
-              Dashboard          Inbox          Threat Center
-                  │                 │                 │
-                  └─────────────────┼─────────────────┘
-                                    ▼
-                            Security Reports
+Gmail Inbox
+     │
+     ▼
+Google OAuth 2.0
+     │
+     ▼
+Gmail API
+     │
+     ▼
+Email Sync Engine
+     │
+     ▼
+Security Analyzer
+     │
+     ├── Risk Scoring
+     ├── Threat Detection
+     └── Security Explanation
+             │
+             ▼
+      ScamShield Dashboard
