@@ -1,14 +1,15 @@
 # 🛡️ ScamShield AI
 
-### AI-Powered Email Security & Phishing Detection Platform
+### AI-Assisted Email Security & Threat Detection Platform
 
 <p align="center">
   ScamShield AI connects to Gmail and analyzes incoming emails for phishing,
-  scams, suspicious links, and social-engineering threats.
+  scams, suspicious links, and social-engineering threats — helping users
+  understand the risk before interacting with them.
 </p>
 
 <p align="center">
-  <a href="#-overview">Overview</a> •
+  <a href="#-why-scamshield">Why ScamShield</a> •
   <a href="#-features">Features</a> •
   <a href="#-how-it-works">How It Works</a> •
   <a href="#-tech-stack">Tech Stack</a> •
@@ -19,13 +20,26 @@
 
 ---
 
-## 🧭 Overview
+## 🖥️ Product Preview
 
-ScamShield AI is a cybersecurity platform that adds a security layer to your Gmail inbox.
+<p align="center">
+  <img src="docs/hero.png" alt="ScamShield AI Landing Page" width="100%">
+</p>
 
-It connects to Gmail using read-only OAuth access, imports incoming emails, and analyzes them for phishing, scams, suspicious links, social engineering, financial requests, credential harvesting, and other threat signals.
+---
 
-Instead of simply marking an email as suspicious, ScamShield provides a detailed security investigation explaining **why an email may be dangerous**.
+## 🧭 Why ScamShield?
+
+Email remains one of the most common entry points for phishing, fraud,
+credential theft, impersonation, and social-engineering attacks.
+
+Traditional email security often presents users with a simple warning or
+classification. ScamShield takes a more explainable approach by analyzing
+multiple threat signals and presenting users with a security investigation
+that explains **why an email may be dangerous**.
+
+ScamShield is designed as a security layer between the user and potentially
+malicious email interactions.
 
 ---
 
@@ -33,76 +47,107 @@ Instead of simply marking an email as suspicious, ScamShield provides a detailed
 
 ### 📧 Gmail Integration
 
-- Google OAuth 2.0 authentication
-- Read-only Gmail access
-- Real inbox synchronization
-- Manual Gmail sync
-- Automatic email importing
-- Sender and email metadata extraction
+* Google OAuth 2.0 authentication
+* Read-only Gmail access
+* Real inbox synchronization
+* Manual Gmail synchronization
+* Automatic email importing
+* Sender and email metadata extraction
 
 ### 🔍 Threat Detection
 
-ScamShield analyzes emails for:
+ScamShield analyzes emails for multiple security signals, including:
 
-- Phishing indicators
-- Scam patterns
-- Suspicious links
-- Social-engineering signals
-- Account takeover attempts
-- Credential harvesting
-- Financial/payment requests
-- Suspicious sender domains
-- Artificial urgency
-- Suspicious billing activity
+* Phishing indicators
+* Scam patterns
+* Suspicious links
+* Social-engineering signals
+* Account takeover attempts
+* Credential harvesting
+* Financial and payment requests
+* Suspicious sender domains
+* Artificial urgency
+* Suspicious billing activity
 
 ### 🎯 Risk Scoring
 
-Every analyzed email receives a security score from:
+Each analyzed email receives a security risk score from:
 
 **0 → 100**
 
-Emails are categorized into:
+Emails are classified into four security levels:
 
-- 🟢 Safe
-- 🟡 Suspicious
-- 🟠 High Risk
-- 🔴 Critical Risk
+* 🟢 Safe
+* 🟡 Suspicious
+* 🟠 High Risk
+* 🔴 Critical Risk
 
 ### 🧠 Security Intelligence
 
-Each analyzed email provides:
+Each analyzed email can provide:
 
-- Risk score
-- Severity
-- Threat category
-- Confidence level
-- Security explanation
-- Detected threat indicators
-- Recommended action
+* Risk score
+* Severity level
+* Threat category
+* Confidence level
+* Security explanation
+* Detected threat indicators
+* Recommended action
+
+### 🤖 ScamShield AI Assistant
+
+Users can ask questions about suspicious emails and receive
+plain-language security explanations.
+
+<p align="center">
+  <img src="docs/ai-assistant.png" alt="ScamShield AI Assistant" width="90%">
+</p>
+
+The assistant is designed to help users understand security signals instead
+of relying only on a numerical risk score.
 
 ### 📊 Security Dashboard
 
-The dashboard provides a complete overview of inbox security:
+The dashboard provides an overview of inbox security, including:
 
-- Protection score
-- Emails scanned
-- Suspicious emails
-- Threats detected
-- Guard status
-- Overall security health
+* Protection score
+* Emails scanned
+* Suspicious emails
+* Threats detected
+* Guard status
+* Overall security health
 
 ### 📬 Email Investigation
 
-Users can open individual emails and inspect:
+Users can inspect individual emails and view:
 
-- Sender information
-- Email subject
-- Email content
-- Security investigation report
-- Risk score
-- Threat category
-- Detected threat indicators
-- Security intelligence explanation
+* Sender information
+* Email subject
+* Email content
+* Security investigation report
+* Risk score
+* Threat category
+* Detected threat indicators
+* Security intelligence explanation
+
+---
+
+## 🛡️ Threat Coverage
+
+ScamShield is designed to identify multiple categories of email-based threats:
+
+<p align="center">
+  <img src="docs/threat-coverage.png" alt="ScamShield Threat Coverage" width="100%">
+</p>
+
+| Threat Category  | Example                                |
+| ---------------- | -------------------------------------- |
+| Phishing         | Credential theft through impersonation |
+| Job Scams        | Fraudulent employment offers           |
+| Payment Scams    | Fake transaction or payment requests   |
+| Impersonation    | Spoofed sender identity                |
+| Suspicious Links | Potentially malicious URLs             |
+| Account Takeover | Attempts to obtain account credentials |
 
 ---
 
@@ -136,14 +181,14 @@ Users can open individual emails and inspect:
                  Email Investigation
 ```
 
----
-
-## 🖥️ Application Flow
+### Application Flow
 
 ```text
 Connect Gmail
       ↓
 Google Authorization
+      ↓
+Read-Only Gmail Permission
       ↓
 Inbox Synchronization
       ↓
@@ -160,21 +205,51 @@ Detailed Email Investigation
 
 ---
 
+## 🏗️ System Architecture
+
+```text
+┌──────────────────────────────┐
+│        React Frontend        │
+│                              │
+│ Dashboard • Inbox • Reports │
+│ Security Analysis • Settings│
+└──────────────┬───────────────┘
+               │
+               │ REST API
+               ▼
+┌──────────────────────────────┐
+│       FastAPI Backend        │
+│                              │
+│ API Routes • Authentication  │
+│ Email Processing • Analyzer  │
+└──────────────┬───────────────┘
+               │
+       ┌───────┴────────┐
+       ▼                ▼
+┌─────────────┐  ┌──────────────┐
+│ Gmail API   │  │   SQLite DB  │
+│             │  │              │
+│ Email Data  │  │ Threat Data  │
+└─────────────┘  └──────────────┘
+```
+
+---
+
 ## 💻 Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React |
-| Build Tool | Vite |
-| Styling | CSS |
-| Backend | Python |
-| API Framework | FastAPI |
-| Database | SQLite |
-| ORM | SQLAlchemy |
-| Authentication | Google OAuth 2.0 |
-| Email API | Gmail API |
-| Server | Uvicorn |
-| Version Control | Git + GitHub |
+| Layer           | Technology       |
+| --------------- | ---------------- |
+| Frontend        | React            |
+| Build Tool      | Vite             |
+| Styling         | CSS              |
+| Backend         | Python           |
+| API Framework   | FastAPI          |
+| Database        | SQLite           |
+| ORM             | SQLAlchemy       |
+| Authentication  | Google OAuth 2.0 |
+| Email API       | Gmail API        |
+| Server          | Uvicorn          |
+| Version Control | Git + GitHub     |
 
 ---
 
@@ -193,6 +268,11 @@ ScamShield/
 │   ├── seed.py
 │   ├── requirements.txt
 │   └── credentials.example.json
+│
+├── docs/
+│   ├── hero.png
+│   ├── ai-assistant.png
+│   └── threat-coverage.png
 │
 ├── public/
 │   ├── favicon.svg
@@ -258,7 +338,7 @@ pip install -r requirements.txt
 
 Create a Google OAuth Desktop application and download the credentials file.
 
-Place it inside:
+Place the credentials file inside:
 
 ```text
 backend/credentials.json
@@ -332,7 +412,8 @@ Security Analysis
 Dashboard
 ```
 
-ScamShield only requests Gmail read-only access for email security analysis.
+ScamShield requests Gmail read-only access so that emails can be retrieved
+and analyzed for security purposes.
 
 ---
 
@@ -342,20 +423,21 @@ ScamShield follows a **read-only security model**.
 
 ### ScamShield can:
 
-- ✅ Read emails for security analysis
-- ✅ Analyze sender information
-- ✅ Analyze email content
-- ✅ Detect suspicious activity
-- ✅ Generate security reports
+* ✅ Read emails for security analysis
+* ✅ Analyze sender information
+* ✅ Analyze email content
+* ✅ Detect suspicious activity
+* ✅ Generate security reports
 
 ### ScamShield cannot:
 
-- ❌ Send emails
-- ❌ Delete emails
-- ❌ Modify emails
-- ❌ Reply to emails
+* ❌ Send emails
+* ❌ Delete emails
+* ❌ Modify emails
+* ❌ Reply to emails
 
-Sensitive OAuth files are excluded from Git version control through `.gitignore`.
+Sensitive OAuth files are excluded from Git version control through
+`.gitignore`.
 
 The following files should never be committed:
 
@@ -364,6 +446,9 @@ backend/credentials.json
 backend/token.json
 backend/*.db
 ```
+
+> 🔒 Always review `.gitignore` and repository contents before pushing
+> credentials or other sensitive information.
 
 ---
 
@@ -389,24 +474,26 @@ Avoid interacting with embedded links
 or replying to the email.
 ```
 
-The investigation view allows users to understand the detected threat instead of simply receiving a warning.
+The investigation view allows users to understand the detected threat instead
+of simply receiving a warning.
 
 ---
 
 ## 🎯 Project Goals
 
-ScamShield AI was built to explore the combination of:
+ScamShield AI was built to explore the intersection of:
 
-- Cybersecurity
-- Email threat detection
-- AI-assisted security analysis
-- OAuth authentication
-- API integration
-- Risk scoring
-- Security dashboards
-- Threat intelligence
+* 🔐 Cybersecurity
+* 📧 Email threat detection
+* 🤖 AI-assisted security analysis
+* 🔑 OAuth authentication
+* 🔌 API integration
+* 🎯 Risk scoring
+* 📊 Security dashboards
+* 🛡️ Threat intelligence
 
-The main goal is to make complex email security signals easier for users to understand and act upon.
+The primary goal is to make complex email security signals easier for users
+to understand and act upon.
 
 ---
 
@@ -414,26 +501,29 @@ The main goal is to make complex email security signals easier for users to unde
 
 Future improvements planned for ScamShield include:
 
-- 🤖 Machine-learning based phishing classification
-- 🔗 Advanced URL reputation analysis
-- 🌐 Domain intelligence
-- 📸 Malicious webpage analysis
-- 🧩 Browser extension
-- ⚡ Real-time inbox monitoring
-- 🔔 Real-time threat notifications
-- 📈 Advanced security analytics
-- 🧠 Improved threat classification
-- 📊 Historical security trends
+* 🤖 Machine-learning-based phishing classification
+* 🔗 Advanced URL reputation analysis
+* 🌐 Domain intelligence
+* 📸 Malicious webpage analysis
+* 🧩 Browser extension
+* ⚡ Real-time inbox monitoring
+* 🔔 Real-time threat notifications
+* 📈 Advanced security analytics
+* 🧠 Improved threat classification
+* 📊 Historical security trends
 
 ---
 
 ## ⚠️ Disclaimer
 
-ScamShield AI is a cybersecurity prototype intended for educational, research, and demonstration purposes.
+ScamShield AI is a cybersecurity prototype intended for educational,
+research, and demonstration purposes.
 
-Security analysis should not be treated as a guarantee that an email is safe or malicious.
+Security analysis should not be treated as a guarantee that an email is
+safe or malicious.
 
-Always exercise caution when interacting with suspicious emails, links, attachments, or requests for sensitive information.
+Always exercise caution when interacting with suspicious emails, links,
+attachments, or requests for sensitive information.
 
 ---
 
@@ -442,6 +532,10 @@ Always exercise caution when interacting with suspicious emails, links, attachme
 **Krishiv Sharma**
 
 B.Tech CSE — Cybersecurity
+
+Interested in:
+
+**Cybersecurity • Software Engineering • AI • Threat Detection**
 
 ---
 
