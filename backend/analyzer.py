@@ -1,4 +1,5 @@
 import re
+from urllib.parse import urlparse
 
 
 KNOWN_SAFE_DOMAINS = [
@@ -213,7 +214,7 @@ def analyze_email_content(
             )
         })
 
-    # ============================================================
+        # ============================================================
     # 6. SUSPICIOUS LINK DETECTION
     # ============================================================
 
@@ -222,17 +223,49 @@ def analyze_email_content(
         body
     )
 
+    def is_trusted_url(link: str) -> bool:
+        """
+        Check whether the URL belongs to a trusted domain.
+
+        A domain is trusted only when the hostname is:
+        - exactly the trusted domain, or
+        - a legitimate subdomain of the trusted domain.
+
+        Example:
+        github.com       -> trusted
+        mail.google.com  -> trusted
+        evil-github.com  -> suspicious
+        """
+
+        try:
+            # Add a scheme for URLs such as www.github.com
+            if not link.lower().startswith(("http://", "https://")):
+                link = "https://" + link
+
+            parsed_url = urlparse(link)
+            hostname = parsed_url.hostname
+
+            if not hostname:
+                return False
+
+            hostname = hostname.lower().rstrip(".")
+
+            return any(
+                hostname == trusted_domain
+                or hostname.endswith("." + trusted_domain)
+                for trusted_domain in KNOWN_SAFE_DOMAINS
+            )
+
+        except ValueError:
+            return False
+
     suspicious_links = [
         link
         for link in links
-        if not any(
-            domain_name in link.lower()
-            for domain_name in KNOWN_SAFE_DOMAINS
-        )
+        if not is_trusted_url(link)
     ]
 
     if suspicious_links:
-
         score += 20
 
         flags.append({
