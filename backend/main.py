@@ -12,7 +12,7 @@ import gmail_service
 # Initialize Database tables if not already created
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="ScamShield AI Security API", version="1.0.0")
+app = FastAPI(title="Wardn Security API", version="1.0.0")
 
 # Enable CORS for React frontend
 app.add_middleware(
@@ -29,7 +29,7 @@ app.add_middleware(
 # ── 1. GET /api/health ────────────────────────────────────────────────
 @app.get("/api/health")
 def get_health():
-    return {"status": "ok", "service": "ScamShield AI Security Engine", "version": "1.0.0"}
+    return {"status": "ok", "service": "Wardn Security Engine", "version": "1.0.0"}
 
 # ── 2. POST /api/analyze ─────────────────────────────────────────────
 @app.post("/api/analyze", response_model=schemas.AnalysisSchema)
@@ -194,7 +194,7 @@ def ask_assistant(req: schemas.AssistantRequestSchema, db: Session = Depends(get
     elif "do" in q.lower() or "action" in q.lower():
         ans = "Recommended actions:\n1. Do not click any links or buttons.\n2. Never enter passwords or personal data.\n3. Verify the sender independently via official channels."
     else:
-        ans = "ScamShield AI Guard continuously monitors email signals. Avoid interacting with unverified external links or upfront payment requests."
+        ans = "Wardn Guard continuously monitors email signals. Avoid interacting with unverified external links or upfront payment requests."
 
     return {
         "question": req.question,

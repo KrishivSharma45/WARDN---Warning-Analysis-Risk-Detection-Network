@@ -1,4 +1,4 @@
-// Demo data for ScamShield AI
+// Demo data for Wardn
 
 export const demoEmails = [
   {

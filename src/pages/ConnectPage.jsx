@@ -101,7 +101,7 @@ export default function ConnectPage({ onConnect }) {
                 color: 'var(--text-primary)'
               }}
             >
-              ScamShield AI
+              Wardn
             </span>
           </div>
 
@@ -129,7 +129,7 @@ export default function ConnectPage({ onConnect }) {
               marginBottom: 32
             }}
           >
-            Connect to the ScamShield prototype in seconds. The current build
+            Connect to the Wardn prototype in seconds. The current build
             uses seeded email data and the local security engine; real Gmail
             OAuth is the next integration step.
           </p>
@@ -236,7 +236,7 @@ export default function ConnectPage({ onConnect }) {
                 lineHeight: 1.5
               }}
             >
-              Give ScamShield read-only access to analyze incoming email.
+              Give Wardn read-only access to analyze incoming email.
             </p>
           </div>
 
@@ -433,7 +433,7 @@ export default function ConnectPage({ onConnect }) {
               lineHeight: 1.4
             }}
           >
-            By connecting, you authorize ScamShield to read Gmail messages for
+            By connecting, you authorize Wardn to read Gmail messages for
             security analysis. This local prototype analyzes imported inbox
             messages.
           </p>

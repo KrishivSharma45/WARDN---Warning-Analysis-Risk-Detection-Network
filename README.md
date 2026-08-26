@@ -1,15 +1,15 @@
-# 🛡️ ScamShield AI
+# 🛡️ Wardn
 
 ### AI-Assisted Email Security & Threat Detection Platform
 
 <p align="center">
-  ScamShield AI connects to Gmail and analyzes incoming emails for phishing,
+  Wardn connects to Gmail and analyzes incoming emails for phishing,
   scams, suspicious links, and social-engineering threats — helping users
   understand the risk before interacting with them.
 </p>
 
 <p align="center">
-  <a href="#-why-scamshield">Why ScamShield</a> •
+  <a href="#-why-wardn">Why Wardn</a> •
   <a href="#-features">Features</a> •
   <a href="#-how-it-works">How It Works</a> •
   <a href="#-tech-stack">Tech Stack</a> •
@@ -23,22 +23,22 @@
 ## 🖥️ Product Preview
 
 <p align="center">
-  <img src="docs/hero.png" alt="ScamShield AI Landing Page" width="100%">
+  <img src="docs/hero.png" alt="Wardn Landing Page" width="100%">
 </p>
 
 ---
 
-## 🧭 Why ScamShield?
+## 🧭 Why Wardn?
 
 Email remains one of the most common entry points for phishing, fraud,
 credential theft, impersonation, and social-engineering attacks.
 
 Traditional email security often presents users with a simple warning or
-classification. ScamShield takes a more explainable approach by analyzing
+classification. Wardn takes a more explainable approach by analyzing
 multiple threat signals and presenting users with a security investigation
 that explains **why an email may be dangerous**.
 
-ScamShield is designed as a security layer between the user and potentially
+Wardn is designed as a security layer between the user and potentially
 malicious email interactions.
 
 ---
@@ -56,7 +56,7 @@ malicious email interactions.
 
 ### 🔍 Threat Detection
 
-ScamShield analyzes emails for multiple security signals, including:
+Wardn analyzes emails for multiple security signals, including:
 
 * Phishing indicators
 * Scam patterns
@@ -94,13 +94,13 @@ Each analyzed email can provide:
 * Detected threat indicators
 * Recommended action
 
-### 🤖 ScamShield AI Assistant
+### 🤖 Wardn Assistant
 
 Users can ask questions about suspicious emails and receive
 plain-language security explanations.
 
 <p align="center">
-  <img src="docs/ai-assistant.png" alt="ScamShield AI Assistant" width="90%">
+  <img src="docs/ai-assistant.png" alt="Wardn Assistant" width="90%">
 </p>
 
 The assistant is designed to help users understand security signals instead
@@ -134,10 +134,10 @@ Users can inspect individual emails and view:
 
 ## 🛡️ Threat Coverage
 
-ScamShield is designed to identify multiple categories of email-based threats:
+Wardn is designed to identify multiple categories of email-based threats:
 
 <p align="center">
-  <img src="docs/threat-coverage.png" alt="ScamShield Threat Coverage" width="100%">
+  <img src="docs/threat-coverage.png" alt="Wardn Threat Coverage" width="100%">
 </p>
 
 | Threat Category  | Example                                |
@@ -175,7 +175,7 @@ ScamShield is designed to identify multiple categories of email-based threats:
               │          │          │
               └──────────┼──────────┘
                          ▼
-                 ScamShield Dashboard
+                 Wardn Dashboard
                          │
                          ▼
                  Email Investigation
@@ -256,7 +256,7 @@ Detailed Email Investigation
 ## 📁 Project Structure
 
 ```text
-ScamShield/
+Wardn/
 │
 ├── backend/
 │   ├── analyzer.py
@@ -315,8 +315,8 @@ ScamShield/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/KrishivSharma45/ScamShield-AI.git
-cd ScamShield-AI
+git clone https://github.com/KrishivSharma45/Wardn-AI.git
+cd Wardn-AI
 ```
 
 ### 2. Install frontend dependencies
@@ -388,7 +388,7 @@ http://localhost:5174
 User
  │
  ▼
-ScamShield Connect Page
+Wardn Connect Page
  │
  ▼
 Google OAuth Authorization
@@ -400,7 +400,7 @@ Read-Only Gmail Permission
 Gmail API
  │
  ▼
-ScamShield Backend
+Wardn Backend
  │
  ▼
 Email Synchronization
@@ -412,16 +412,16 @@ Security Analysis
 Dashboard
 ```
 
-ScamShield requests Gmail read-only access so that emails can be retrieved
+Wardn requests Gmail read-only access so that emails can be retrieved
 and analyzed for security purposes.
 
 ---
 
 ## 🛡️ Security & Privacy
 
-ScamShield follows a **read-only security model**.
+Wardn follows a **read-only security model**.
 
-### ScamShield can:
+### Wardn can:
 
 * ✅ Read emails for security analysis
 * ✅ Analyze sender information
@@ -429,7 +429,7 @@ ScamShield follows a **read-only security model**.
 * ✅ Detect suspicious activity
 * ✅ Generate security reports
 
-### ScamShield cannot:
+### Wardn cannot:
 
 * ❌ Send emails
 * ❌ Delete emails
@@ -481,7 +481,7 @@ of simply receiving a warning.
 
 ## 🎯 Project Goals
 
-ScamShield AI was built to explore the intersection of:
+Wardn was built to explore the intersection of:
 
 * 🔐 Cybersecurity
 * 📧 Email threat detection
@@ -499,7 +499,7 @@ to understand and act upon.
 
 ## 🔮 Roadmap
 
-Future improvements planned for ScamShield include:
+Future improvements planned for Wardn include:
 
 * 🤖 Machine-learning-based phishing classification
 * 🔗 Advanced URL reputation analysis
@@ -516,7 +516,7 @@ Future improvements planned for ScamShield include:
 
 ## ⚠️ Disclaimer
 
-ScamShield AI is a cybersecurity prototype intended for educational,
+Wardn is a cybersecurity prototype intended for educational,
 research, and demonstration purposes.
 
 Security analysis should not be treated as a guarantee that an email is
@@ -545,5 +545,5 @@ Interested in:
 </p>
 
 <p align="center">
-  ⭐ If you found ScamShield AI interesting, consider starring the repository.
+  ⭐ If you found Wardn interesting, consider starring the repository.
 </p>

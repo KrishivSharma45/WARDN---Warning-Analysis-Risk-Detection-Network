@@ -77,7 +77,7 @@ export default function ThreatCenter() {
       <div className="card" style={{ padding: 0, overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }}>
         <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border)', background: 'var(--card)' }}>
           <div style={{ fontWeight: 800, fontSize: 16, color: 'var(--text-primary)' }}>Threat Feed</div>
-          <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 2 }}>Live data from the ScamShield security engine</div>
+          <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 2 }}>Live data from the Wardn security engine</div>
         </div>
 
         {loading ? (

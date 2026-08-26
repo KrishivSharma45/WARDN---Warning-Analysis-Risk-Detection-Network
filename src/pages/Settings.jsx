@@ -77,7 +77,7 @@ export default function Settings({ onDisconnect }) {
     <div className="animate-fadeIn" style={{ maxWidth: 680 }}>
       <div style={{ marginBottom: 28 }}>
         <h1 style={{ fontSize: 32, fontWeight: 900, letterSpacing: '-0.03em', color: 'var(--text-primary)', marginBottom: 6 }}>Settings</h1>
-        <p style={{ fontSize: 15, color: 'var(--text-secondary)' }}>Manage your ScamShield AI security settings</p>
+        <p style={{ fontSize: 15, color: 'var(--text-secondary)' }}>Manage your Wardn security settings</p>
       </div>
 
       {/* Gmail Account Connection */}

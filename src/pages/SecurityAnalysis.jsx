@@ -120,7 +120,7 @@ export default function SecurityAnalysis() {
               border: '1px solid var(--accent-mid)', borderLeft: '4px solid var(--accent-dark)'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 800, color: 'var(--accent-dark)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8 }}>
-                <Sparkles size={14} /> ScamShield AI Intelligence Brief
+                <Sparkles size={14} /> Wardn Intelligence Brief
               </div>
               <p style={{ fontSize: 14, color: 'var(--text-primary)', lineHeight: 1.7, margin: 0, fontWeight: 450 }}>
                 {email.aiExplanation}
@@ -178,7 +178,7 @@ export default function SecurityAnalysis() {
             style={{ width: '100%', justifyContent: 'center', padding: '14px', fontSize: 15 }}
           >
             <Shield size={18} />
-            Ask ScamShield AI About This Email
+            Ask Wardn About This Email
           </button>
         </div>
 
@@ -250,7 +250,7 @@ export default function SecurityAnalysis() {
               }}>
                 <AlertTriangle size={18} color="#DC2626" style={{ flexShrink: 0, marginTop: 2 }} />
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: '#991B1B', marginBottom: 2 }}>ScamShield Guard Warning</div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#991B1B', marginBottom: 2 }}>Wardn Guard Warning</div>
                   <div style={{ fontSize: 12.5, color: '#7F1D1D', lineHeight: 1.5 }}>
                     This email exhibits active phishing signals. Interactions are logged and reported.
                   </div>

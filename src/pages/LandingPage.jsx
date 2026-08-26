@@ -153,7 +153,7 @@ function AIChatPreview() {
           <Shield size={18} color="white" />
         </div>
         <div>
-          <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)' }}>ScamShield AI Assistant</span>
+          <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)' }}>Wardn Assistant</span>
           <div style={{ fontSize: 11, color: 'var(--accent-dark)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-dark)' }} /> Security Agent Active
           </div>
@@ -191,7 +191,7 @@ export default function LandingPage() {
           <div style={{ width: 34, height: 34, borderRadius: 10, background: 'var(--accent-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Shield size={18} color="white" />
           </div>
-          <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>ScamShield</span>
+          <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>Wardn</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
@@ -246,7 +246,7 @@ export default function LandingPage() {
               color: 'var(--text-secondary)',
               maxWidth: 480, marginBottom: 36
             }}>
-              ScamShield analyzes incoming emails for phishing, scams and social engineering — and explains the risk before you interact with them.
+              Wardn analyzes incoming emails for phishing, scams and social engineering — and explains the risk before you interact with them.
             </p>
 
             <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 28 }}>
@@ -260,7 +260,7 @@ export default function LandingPage() {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>
               <ShieldCheck size={16} color="var(--accent-dark)" />
-              Read-only access. ScamShield never sends or modifies email on your behalf.
+              Read-only access. Wardn never sends or modifies email on your behalf.
             </div>
           </div>
 
@@ -333,7 +333,7 @@ export default function LandingPage() {
               Get instant answers about any email
             </h2>
             <p style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: 32 }}>
-              Ask ScamShield AI anything about a suspicious email. Get plain-language explanations with specific risk details, not just a score.
+              Ask Wardn anything about a suspicious email. Get plain-language explanations with specific risk details, not just a score.
             </p>
             <button className="btn-primary" onClick={() => navigate('/connect')} style={{ padding: '12px 24px' }}>
               Try it free <ArrowRight size={16} />
@@ -352,7 +352,7 @@ export default function LandingPage() {
           Protect your inbox today
         </h2>
         <p style={{ fontSize: 16, color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 36 }}>
-          One-click prototype connection. Read-only product design. No email is sent or modified by ScamShield.
+          One-click prototype connection. Read-only product design. No email is sent or modified by Wardn.
         </p>
         <button className="btn-primary" onClick={() => navigate('/connect')} style={{ fontSize: 16, padding: '14px 34px' }}>
           Connect Gmail — Free <ArrowRight size={18} />
@@ -365,10 +365,10 @@ export default function LandingPage() {
           <div style={{ width: 28, height: 28, borderRadius: 8, background: 'var(--accent-dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Shield size={14} color="white" />
           </div>
-          <span style={{ fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>ScamShield</span>
+          <span style={{ fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>Wardn</span>
         </div>
         <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>
-          © 2026 ScamShield AI. Prototype mode — local email analysis data is stored in SQLite.
+          © 2026 Wardn. Prototype mode — local email analysis data is stored in SQLite.
         </div>
       </footer>
     </div>

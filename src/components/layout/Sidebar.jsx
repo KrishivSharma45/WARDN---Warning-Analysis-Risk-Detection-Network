@@ -25,7 +25,7 @@ export default function Sidebar() {
             <Shield size={19} color="white" />
           </div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 16, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>ScamShield</div>
+            <div style={{ fontWeight: 800, fontSize: 16, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Wardn</div>
             <div style={{ fontSize: 11, color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase' }}>AI Security</div>
           </div>
         </div>

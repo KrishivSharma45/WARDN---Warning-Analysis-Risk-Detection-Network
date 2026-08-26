@@ -347,7 +347,7 @@ def analyze_email_content(
     body
 ):
     """
-    Main ScamShield email analysis engine.
+    Main Wardn email analysis engine.
 
     Returns:
         risk_score
@@ -769,7 +769,7 @@ def analyze_email_content(
             "No significant phishing, payment, credential, "
             "account takeover, or suspicious link indicators "
             "were detected. The email passes the current "
-            "ScamShield safety checks."
+            "Wardn safety checks."
         )
 
     # ========================================================

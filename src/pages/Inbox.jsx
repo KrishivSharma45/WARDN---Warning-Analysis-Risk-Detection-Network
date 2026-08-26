@@ -162,7 +162,7 @@ export default function Inbox() {
       {loading ? (
         <div className="card" style={{ padding: '40px', textAlign: 'center', color: 'var(--text-secondary)' }}>
           <div className="spinner spinner-dark" style={{ margin: '0 auto 12px' }} />
-          Loading inbox from ScamShield Security API...
+          Loading inbox from Wardn Security API...
         </div>
       ) : filtered.length === 0 ? (
         <div className="card" style={{ padding: '54px 24px', textAlign: 'center' }}>

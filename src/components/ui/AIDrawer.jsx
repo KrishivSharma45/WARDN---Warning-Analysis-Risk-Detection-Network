@@ -5,7 +5,7 @@ import { askAIAssistant } from '../../api/scamShieldApi'
 
 export default function AIDrawer({ onClose, emailContext }) {
   const [messages, setMessages] = useState([
-    { role: 'ai', text: `I'm ScamShield AI. I've analyzed this email and detected multiple risk indicators. What would you like to know?` }
+    { role: 'ai', text: `I'm Wardn. I've analyzed this email and detected multiple risk indicators. What would you like to know?` }
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -52,7 +52,7 @@ export default function AIDrawer({ onClose, emailContext }) {
               <Shield size={18} color="white" />
             </div>
             <div>
-              <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>ScamShield AI</div>
+              <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--text-primary)' }}>Wardn</div>
               <div style={{ fontSize: 11, color: 'var(--accent-dark)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Sparkles size={11} /> Context Aware Security Agent
               </div>

@@ -2,7 +2,7 @@
 
 ## Overview
 
-ScamShield AI is an AI-assisted email security prototype designed to help identify potential phishing, scams, suspicious links, impersonation, and social-engineering threats.
+Wardn is an AI-assisted email security prototype designed to help identify potential phishing, scams, suspicious links, impersonation, and social-engineering threats.
 
 This project is intended for educational, research, and demonstration purposes.
 
@@ -19,7 +19,7 @@ Security-related issues may include:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in ScamShield AI, please avoid publicly disclosing the issue before it can be reviewed.
+If you discover a security vulnerability in Wardn, please avoid publicly disclosing the issue before it can be reviewed.
 
 Provide the following information when reporting an issue:
 
@@ -47,7 +47,7 @@ API keys, passwords, OAuth tokens, and other secrets should never be hardcoded i
 
 ## Gmail Data Privacy
 
-ScamShield uses Gmail read-only access for email security analysis.
+Wardn uses Gmail read-only access for email security analysis.
 
 The application is designed not to:
 
@@ -60,7 +60,7 @@ Users should avoid using real sensitive or confidential email data when testing 
 
 ## Security Disclaimer
 
-ScamShield AI is a prototype and does not guarantee that an email is safe or malicious.
+Wardn is a prototype and does not guarantee that an email is safe or malicious.
 
 Security classifications and risk scores should be treated as indicators rather than definitive security judgments.
 

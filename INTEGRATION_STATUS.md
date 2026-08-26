@@ -1,4 +1,4 @@
-# ScamShield integration status
+# Wardn integration status
 
 ## Connected to FastAPI
 - `GET /api/health`

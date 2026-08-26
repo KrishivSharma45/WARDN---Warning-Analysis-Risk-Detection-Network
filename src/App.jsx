@@ -18,16 +18,16 @@ export const AppContext = {
 
 function App() {
   const [isConnected, setIsConnected] = useState(
-    () => localStorage.getItem('scamshield_connected') === 'true'
+    () => localStorage.getItem('wardn_connected') === 'true'
   )
 
   const connect = () => {
-    localStorage.setItem('scamshield_connected', 'true')
+    localStorage.setItem('wardn_connected', 'true')
     setIsConnected(true)
   }
 
   const disconnect = () => {
-    localStorage.removeItem('scamshield_connected')
+    localStorage.removeItem('wardn_connected')
     setIsConnected(false)
   }
 
