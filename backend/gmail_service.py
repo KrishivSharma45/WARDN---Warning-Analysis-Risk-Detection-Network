@@ -194,6 +194,28 @@ def _import_messages(service, db, max_results=15):
 
     db.commit()
     return imported
+def _friendly_error(exc):
+    error_text = str(exc).lower()
+
+    if isinstance(exc, FileNotFoundError):
+        return str(exc)
+
+    if "invalid_grant" in error_text:
+        return "Gmail authorization expired. Please reconnect your Gmail account."
+
+    if "access_denied" in error_text or "permission" in error_text:
+        return "Gmail permission was denied. Please reconnect and allow read-only access."
+
+    if "credentials" in error_text or "token" in error_text:
+        return "Gmail authentication failed. Please reconnect your Gmail account."
+
+    if "quota" in error_text or "rate limit" in error_text:
+        return "Gmail API limit reached. Please try syncing again later."
+
+    if "connection" in error_text or "timeout" in error_text:
+        return "Could not connect to Gmail. Please check your internet connection and try again."
+
+    return "Something went wrong while connecting to Gmail. Please try again."
 
 
 def _connect_worker():
@@ -218,10 +240,10 @@ def _connect_worker():
             message=f"Gmail connected. Imported {imported} new inbox emails.",
         )
     except Exception as exc:
-        _set_state(
-            status="error",
-            message=str(exc),
-        )
+     _set_state(
+        status="error",
+        message=_friendly_error(exc),
+    )
 
 
 def start_connect():
@@ -260,8 +282,11 @@ def sync_now():
         )
         return get_state()
     except Exception as exc:
-        _set_state(status="error", message=str(exc))
-        return get_state()
+     _set_state(
+        status="error",
+        message=_friendly_error(exc),
+    )
+    return get_state()
 
 
 def disconnect():

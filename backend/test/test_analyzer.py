@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from analyzer import analyze_email_content
+from gmail_service import _friendly_error
 
 
 def get_url_flag(url):
@@ -35,3 +36,17 @@ def test_lookalike_github_domain():
 
 def test_suspicious_external_domain():
     assert get_url_flag("https://example-scam.com/test") is True
+
+def test_friendly_error_for_expired_authorization():
+    message = _friendly_error(Exception("invalid_grant"))
+    assert "authorization expired" in message.lower()
+
+
+def test_friendly_error_for_api_quota():
+    message = _friendly_error(Exception("quota exceeded"))
+    assert "api limit" in message.lower()
+
+
+def test_friendly_error_for_connection_issue():
+    message = _friendly_error(Exception("connection timeout"))
+    assert "connect to gmail" in message.lower()
