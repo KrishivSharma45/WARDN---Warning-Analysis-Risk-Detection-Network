@@ -1,4 +1,4 @@
-import { syncGmail, disconnectGmail } from '../api/scamShieldApi'
+import { syncGmail, disconnectGmail } from "../api/WardnApi";
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RefreshCw, LogOut, Shield, Lock, ShieldCheck } from 'lucide-react'

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { X, Send, Shield, Sparkles } from 'lucide-react'
 import { aiSuggestions, aiResponses } from '../../data/demoData'
-import { askAIAssistant } from '../../api/scamShieldApi'
+import { askAIAssistant } from '../../api/WardnApi'
 
 export default function AIDrawer({ onClose, emailContext }) {
   const [messages, setMessages] = useState([

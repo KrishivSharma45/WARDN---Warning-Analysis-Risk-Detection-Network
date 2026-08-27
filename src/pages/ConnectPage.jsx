@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Shield, Check, ShieldCheck } from 'lucide-react'
-import { startGmailConnect, fetchGmailStatus } from '../api/scamShieldApi'
+import { startGmailConnect, fetchGmailStatus } from '../api/WardnApi'
 
 export default function ConnectPage({ onConnect }) {
   const navigate = useNavigate()

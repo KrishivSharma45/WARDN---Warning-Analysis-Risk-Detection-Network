@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 import { reportData as localReportData } from '../data/demoData'
-import { fetchStats } from '../api/scamShieldApi'
+import { fetchStats } from '../api/WardnApi'
 import ScoreRing from '../components/ui/ScoreRing'
 
 const CustomTooltip = ({ active, payload }) => {

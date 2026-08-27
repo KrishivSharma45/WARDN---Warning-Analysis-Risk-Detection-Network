@@ -1,34 +1,46 @@
-# 🛡️ Wardn
+<div align="center">
 
-### AI-Assisted Email Security & Threat Detection Platform
+# 🛡️ WARDN
 
-<p align="center">
-  Wardn connects to Gmail and analyzes incoming emails for phishing,
-  scams, suspicious links, and social-engineering threats — helping users
-  understand the risk before interacting with them.
-</p>
+### Warning, Analysis & Risk Detection Network
 
-<p align="center">
-  <a href="#-why-wardn">Why Wardn</a> •
-  <a href="#-features">Features</a> •
-  <a href="#-how-it-works">How It Works</a> •
-  <a href="#-tech-stack">Tech Stack</a> •
-  <a href="#-installation">Installation</a> •
-  <a href="#-security--privacy">Security</a> •
-  <a href="#-roadmap">Roadmap</a>
-</p>
+**AI-Assisted Email Security & Threat Detection Platform**
+
+WARDN connects to Gmail and analyzes incoming emails for phishing,
+scams, suspicious links, impersonation, and social-engineering threats —
+helping users understand security risks before interacting with them.
+
+<br>
+
+<img src="https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+<img src="https://img.shields.io/badge/Gmail-API-EA4335?style=for-the-badge&logo=gmail&logoColor=white">
+<img src="https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+
+<br>
+
+<img src="https://img.shields.io/badge/Cybersecurity-Threat%20Detection-red?style=for-the-badge">
+<img src="https://img.shields.io/badge/Authentication-Google%20OAuth%202.0-orange?style=for-the-badge">
+<img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge">
+
+</div>
 
 ---
 
 ## 🖥️ Product Preview
 
 <p align="center">
-  <img src="docs/hero.png" alt="Wardn Landing Page" width="100%">
+  <img src="docs/hero.png" alt="WARDN Landing Page" width="100%">
+</p>
+
+<p align="center">
+  <em>WARDN security dashboard and email threat analysis interface.</em>
 </p>
 
 ---
 
-## 🧭 Why Wardn?
+## 🧭 Why WARDN?
 
 Email remains one of the most common entry points for phishing, fraud,
 credential theft, impersonation, and social-engineering attacks.
@@ -94,14 +106,20 @@ Each analyzed email can provide:
 * Detected threat indicators
 * Recommended action
 
-### 🤖 Wardn Assistant
+### 🤖 WARDN Assistant
 
 Users can ask questions about suspicious emails and receive
 plain-language security explanations.
 
 <p align="center">
-  <img src="docs/ai-assistant.png" alt="Wardn Assistant" width="90%">
+  <img src="docs/ai-assistant.png" alt="WARDN AI Security Assistant" width="100%">
 </p>
+
+<p align="center">
+  <em>Ask WARDN AI for plain-language explanations of suspicious emails.</em>
+</p>
+
+---
 
 The assistant is designed to help users understand security signals instead
 of relying only on a numerical risk score.
@@ -137,17 +155,12 @@ Users can inspect individual emails and view:
 Wardn is designed to identify multiple categories of email-based threats:
 
 <p align="center">
-  <img src="docs/threat-coverage.png" alt="Wardn Threat Coverage" width="100%">
+  <img src="docs/threat-coverage.png" alt="WARDN Threat Coverage" width="100%">
 </p>
 
-| Threat Category  | Example                                |
-| ---------------- | -------------------------------------- |
-| Phishing         | Credential theft through impersonation |
-| Job Scams        | Fraudulent employment offers           |
-| Payment Scams    | Fake transaction or payment requests   |
-| Impersonation    | Spoofed sender identity                |
-| Suspicious Links | Potentially malicious URLs             |
-| Account Takeover | Attempts to obtain account credentials |
+<p align="center">
+  <em>WARDN analyzes multiple categories of email-based threats.</em>
+</p>
 
 ---
 
@@ -280,7 +293,7 @@ Wardn/
 │
 ├── src/
 │   ├── api/
-│   │   └── scamShieldApi.js
+│   │   └── WardnApi.js
 │   │
 │   ├── components/
 │   │   ├── layout/
@@ -421,7 +434,7 @@ and analyzed for security purposes.
 
 Wardn follows a **read-only security model**.
 
-### Wardn can:
+### WARDN can:
 
 * ✅ Read emails for security analysis
 * ✅ Analyze sender information
@@ -429,7 +442,7 @@ Wardn follows a **read-only security model**.
 * ✅ Detect suspicious activity
 * ✅ Generate security reports
 
-### Wardn cannot:
+### WARDN cannot:
 
 * ❌ Send emails
 * ❌ Delete emails

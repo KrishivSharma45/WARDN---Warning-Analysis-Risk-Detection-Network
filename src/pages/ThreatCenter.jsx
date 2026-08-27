@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AlertTriangle, ChevronRight } from 'lucide-react'
-import { fetchThreats } from '../api/scamShieldApi'
+import { fetchThreats } from '../api/WardnApi'
 import RiskBadge from '../components/ui/RiskBadge'
 
 const severityColor = {

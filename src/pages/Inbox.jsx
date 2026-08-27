@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Search, RefreshCw } from 'lucide-react'
-import { fetchEmails, syncGmail } from '../api/scamShieldApi'
+import { fetchEmails, syncGmail } from '../api/WardnApi'
 import EmailCard from '../components/ui/EmailCard'
 
 const filters = [

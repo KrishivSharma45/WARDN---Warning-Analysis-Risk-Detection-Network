@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Shield, Mail, AlertTriangle, CheckCircle, ChevronRight } from 'lucide-react'
 import { demoEmails, threatStats as localThreatStats } from '../data/demoData'
-import { fetchStats, fetchEmails } from '../api/scamShieldApi'
+import { fetchStats, fetchEmails } from '../api/WardnApi'
 import RiskBadge from '../components/ui/RiskBadge'
 import ScoreRing from '../components/ui/ScoreRing'
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Shield, AlertTriangle, ExternalLink, ChevronDown, ChevronUp, Sparkles, CheckCircle2, XCircle } from 'lucide-react'
 import { demoEmails } from '../data/demoData'
-import { fetchEmailById } from '../api/scamShieldApi'
+import { fetchEmailById } from "../api/WardnApi";
 import ScoreRing from '../components/ui/ScoreRing'
 import RiskBadge from '../components/ui/RiskBadge'
 import AIDrawer from '../components/ui/AIDrawer'
