@@ -164,35 +164,41 @@ Wardn is designed to identify multiple categories of email-based threats:
 
 ---
 
-## ⚙️ How It Works
+## ⚙️ How WARDN Works
+
+WARDN adds a security analysis layer between your Gmail inbox and your decision to interact with an email.
 
 ```text
-                    Gmail Inbox
-                         │
-                         ▼
-                 Google OAuth 2.0
-                         │
-                         ▼
-                     Gmail API
-                         │
-                         ▼
-                  Email Sync Engine
-                         │
-                         ▼
-                  Security Analyzer
-                         │
-              ┌──────────┼──────────┐
-              ▼          ▼          ▼
-         Risk Scoring  Threat    Security
-                      Detection  Explanation
-              │          │          │
-              └──────────┼──────────┘
-                         ▼
-                 Wardn Dashboard
-                         │
-                         ▼
-                 Email Investigation
-```
+Gmail Inbox
+     │
+     ▼
+Google OAuth 2.0
+     │
+     ▼
+Gmail API
+     │
+     ▼
+Email Synchronization
+     │
+     ▼
+Threat Analysis
+     │
+     ├── Sender & Domain Signals
+     ├── Suspicious Links
+     ├── Urgency Signals
+     ├── Payment Requests
+     └── Credential Harvesting
+     │
+     ▼
+Risk Scoring
+     │
+     ▼
+Security Explanation
+     │
+     ▼
+WARDN Dashboard
+
+---
 
 ### Application Flow
 
