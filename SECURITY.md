@@ -1,70 +1,46 @@
-# 🔐 Security Policy
+# Security Policy
 
-## Overview
+## About WARDN
 
-Wardn is an AI-assisted email security prototype designed to help identify potential phishing, scams, suspicious links, impersonation, and social-engineering threats.
+WARDN (Warning, Analysis & Risk Detection Network) is an email security platform designed to help identify potentially suspicious, phishing, scam, and social-engineering emails.
 
-This project is intended for educational, research, and demonstration purposes.
+WARDN analyzes signals such as:
 
-## Supported Security Concerns
+- Suspicious sender domains
+- Embedded URLs
+- Artificial urgency
+- Payment requests
+- Credential-harvesting attempts
+- Suspicious job or internship offers
 
-Security-related issues may include:
+The platform provides a risk score, severity level, threat category, and plain-language explanation to help users make safer decisions.
 
-* Authentication or authorization vulnerabilities
-* Exposure of sensitive information
-* Insecure handling of email data
-* Improper access controls
-* Vulnerabilities that could expose OAuth credentials or tokens
-* Security issues in the email analysis pipeline
+## Responsible Disclosure
 
-## Reporting a Vulnerability
+If you discover a security vulnerability in WARDN, please report it responsibly rather than publicly disclosing the issue before it can be investigated.
 
-If you discover a security vulnerability in Wardn, please avoid publicly disclosing the issue before it can be reviewed.
+When reporting a vulnerability, provide:
 
-Provide the following information when reporting an issue:
+- A clear description of the issue
+- Steps to reproduce it
+- The potential security impact
+- Any relevant screenshots or logs that do not contain sensitive information
 
-* A clear description of the vulnerability
-* Steps required to reproduce it
-* The potential security impact
-* Any relevant screenshots, logs, or proof-of-concept information
+## Security & Privacy
 
-Please do not include real passwords, OAuth tokens, API keys, private email content, or other sensitive information in a report.
+WARDN is designed with security and privacy in mind.
 
-## Protecting Secrets
+- Gmail integration uses Google's OAuth authorization flow.
+- Gmail access is requested using read-only permissions.
+- OAuth credentials and tokens should never be committed to the repository.
+- Do not include passwords, API keys, access tokens, or other secrets in issues, pull requests, screenshots, or commits.
+- Local credential files should remain excluded through `.gitignore`.
 
-Never commit sensitive credentials or authentication files to GitHub.
+## Disclaimer
 
-The following files must remain local and should be excluded through `.gitignore`:
+WARDN is a security analysis aid and **does not guarantee that an email is safe or malicious**.
 
-```text
-backend/credentials.json
-backend/token.json
-backend/*.db
-.env
-```
-
-API keys, passwords, OAuth tokens, and other secrets should never be hardcoded into source code.
-
-## Gmail Data Privacy
-
-Wardn uses Gmail read-only access for email security analysis.
-
-The application is designed not to:
-
-* Send emails
-* Delete emails
-* Modify emails
-* Reply to emails
-
-Users should avoid using real sensitive or confidential email data when testing development versions of the project.
-
-## Security Disclaimer
-
-Wardn is a prototype and does not guarantee that an email is safe or malicious.
-
-Security classifications and risk scores should be treated as indicators rather than definitive security judgments.
-
-Always exercise caution when interacting with suspicious emails, links, attachments, or requests for sensitive information.
+Risk scores and classifications are based on detected signals and should be used together with user judgment and appropriate security practices.
 
 ---
 
