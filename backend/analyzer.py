@@ -1,5 +1,7 @@
 import re
+import ipaddress
 from urllib.parse import urlparse
+
 
 # ============================================================
 # TRUSTED DOMAINS
@@ -27,7 +29,7 @@ KNOWN_SAFE_DOMAINS = [
 # ============================================================
 
 def extract_urls(text):
-    """Extract URLs from email text."""
+    """Extract HTTP/HTTPS and www URLs from email text."""
 
     if not text:
         return []
@@ -35,7 +37,7 @@ def extract_urls(text):
     urls = re.findall(
         r'https?://[^\s<>"\']+|www\.[^\s<>"\']+',
         text,
-        flags=re.IGNORECASE
+        flags=re.IGNORECASE,
     )
 
     cleaned = []
@@ -50,34 +52,69 @@ def extract_urls(text):
 
 
 def get_domain(url):
-    """Safely extract hostname from a URL."""
+    """Safely extract the hostname from a URL."""
+
+    if not url:
+        return ""
 
     try:
-        normalized = url
+        normalized = url.strip()
 
         if not normalized.lower().startswith(("http://", "https://")):
             normalized = "https://" + normalized
 
         parsed = urlparse(normalized)
 
-        return (parsed.hostname or "").lower().rstrip(".")
+        hostname = parsed.hostname or ""
+
+        return hostname.lower().rstrip(".")
 
     except Exception:
         return ""
 
 
-def is_trusted_domain(domain):
-    """Check whether a domain belongs to the trusted whitelist."""
+def is_valid_ip(domain):
+    """Return True only when the entire domain is a valid IP address."""
 
     if not domain:
         return False
 
-    domain = domain.lower().rstrip(".")
+    try:
+        ipaddress.ip_address(domain)
+        return True
+    except ValueError:
+        return False
+
+
+def is_trusted_domain(domain):
+    """
+    Check whether a domain belongs to the trusted whitelist.
+
+    Examples:
+
+        google.com              -> trusted
+        mail.google.com         -> trusted
+        accounts.google.com    -> trusted
+
+        evil-google.com         -> NOT trusted
+        google.com.evil.com     -> NOT trusted
+        google-login.evil.com   -> NOT trusted
+    """
+
+    if not domain:
+        return False
+
+    domain = domain.lower().strip().rstrip(".")
 
     for trusted in KNOWN_SAFE_DOMAINS:
-        trusted = trusted.lower()
+        trusted = trusted.lower().strip().rstrip(".")
 
-        if domain == trusted or domain.endswith("." + trusted):
+        # Exact match.
+        if domain == trusted:
+            return True
+
+        # Legitimate subdomain.
+        if domain.endswith("." + trusted):
             return True
 
     return False
@@ -92,7 +129,16 @@ def analyze_link(url):
     Analyze one URL and return a security profile.
     """
 
-    original_url = url.strip().rstrip(".,;:!?)]}>")
+    original_url = (url or "").strip().rstrip(".,;:!?)]}>")
+
+    if not original_url:
+        return {
+            "url": original_url,
+            "domain": "unknown",
+            "risk_score": 90,
+            "status": "dangerous",
+            "indicators": ["Empty or invalid URL"],
+        }
 
     normalized_url = original_url
 
@@ -117,11 +163,11 @@ def analyze_link(url):
                 "status": "dangerous",
                 "indicators": [
                     "Malformed or invalid URL"
-                ]
+                ],
             }
 
         # ----------------------------------------------------
-        # 1. TRUSTED DOMAIN
+        # 1. TRUSTED DOMAIN VALIDATION
         # ----------------------------------------------------
 
         trusted = is_trusted_domain(domain)
@@ -137,10 +183,7 @@ def analyze_link(url):
         # 2. RAW IP ADDRESS
         # ----------------------------------------------------
 
-        if re.match(
-            r"^\d{1,3}(\.\d{1,3}){3}$",
-            domain
-        ):
+        if is_valid_ip(domain):
             risk_score += 30
 
             indicators.append(
@@ -148,7 +191,18 @@ def analyze_link(url):
             )
 
         # ----------------------------------------------------
-        # 3. SUSPICIOUS SECURITY KEYWORDS
+        # 3. USERINFO / @ DECEPTION
+        # ----------------------------------------------------
+
+        if parsed.username or parsed.password:
+            risk_score += 25
+
+            indicators.append(
+                "URL contains embedded username or password information"
+            )
+
+        # ----------------------------------------------------
+        # 4. SECURITY KEYWORDS IN SUSPICIOUS DOMAINS
         # ----------------------------------------------------
 
         security_keywords = [
@@ -175,11 +229,11 @@ def analyze_link(url):
             risk_score += 15
 
             indicators.append(
-                "Domain contains account or security-related keywords"
+                "Suspicious domain contains account or security-related keywords"
             )
 
         # ----------------------------------------------------
-        # 4. BRAND IMPERSONATION
+        # 5. BRAND IMPERSONATION
         # ----------------------------------------------------
 
         brands = [
@@ -207,7 +261,7 @@ def analyze_link(url):
                 break
 
         # ----------------------------------------------------
-        # 5. HTTP WITHOUT HTTPS
+        # 6. HTTP WITHOUT HTTPS
         # ----------------------------------------------------
 
         if parsed.scheme.lower() == "http":
@@ -219,7 +273,7 @@ def analyze_link(url):
             )
 
         # ----------------------------------------------------
-        # 6. VERY LONG URL
+        # 7. VERY LONG URL
         # ----------------------------------------------------
 
         if len(original_url) > 150:
@@ -231,7 +285,7 @@ def analyze_link(url):
             )
 
         # ----------------------------------------------------
-        # 7. MANY QUERY PARAMETERS
+        # 8. MANY QUERY PARAMETERS
         # ----------------------------------------------------
 
         query_parameters = []
@@ -248,7 +302,7 @@ def analyze_link(url):
             )
 
         # ----------------------------------------------------
-        # 8. URL ENCODING
+        # 9. URL ENCODING
         # ----------------------------------------------------
 
         if "%" in original_url:
@@ -260,7 +314,7 @@ def analyze_link(url):
             )
 
         # ----------------------------------------------------
-        # 9. SUSPICIOUS TLD
+        # 10. SUSPICIOUS TLD
         # ----------------------------------------------------
 
         suspicious_tlds = [
@@ -282,6 +336,31 @@ def analyze_link(url):
             indicators.append(
                 "Domain uses a commonly abused or suspicious top-level domain"
             )
+
+        # ----------------------------------------------------
+        # 11. DOMAIN LOOKS LIKE A BRAND BUT IS NOT TRUSTED
+        # ----------------------------------------------------
+
+        for trusted_brand in KNOWN_SAFE_DOMAINS:
+
+            brand_name = trusted_brand.split(".")[0]
+
+            if (
+                brand_name in domain
+                and not is_trusted_domain(domain)
+                and not any(
+                    brand_name in indicator.lower()
+                    for indicator in indicators
+                    if "impersonation" in indicator.lower()
+                )
+            ):
+                risk_score += 10
+
+                indicators.append(
+                    f"Domain resembles the trusted brand '{brand_name}'"
+                )
+
+                break
 
         # ----------------------------------------------------
         # LIMIT SCORE
@@ -344,12 +423,13 @@ def analyze_email_content(
     sender,
     sender_name,
     subject,
-    body
+    body,
 ):
     """
-    Main Wardn email analysis engine.
+    Main WARDN email analysis engine.
 
     Returns:
+
         risk_score
         severity
         category
@@ -381,7 +461,12 @@ def analyze_email_content(
     sender_domain = ""
 
     if "@" in sender:
-        sender_domain = sender.split("@")[-1].lower().strip()
+        sender_domain = (
+            sender.split("@")[-1]
+            .lower()
+            .strip()
+            .rstrip(".")
+        )
 
     if sender_domain and not is_trusted_domain(sender_domain):
 
@@ -392,7 +477,7 @@ def analyze_email_content(
             "description": (
                 f"Sender domain '{sender_domain}' "
                 "is not present in the verified domain whitelist."
-            )
+            ),
         })
 
     # ========================================================
@@ -433,7 +518,7 @@ def analyze_email_content(
                 "The email contains language associated with "
                 "requests for passwords, OTPs, login credentials, "
                 "or identity information."
-            )
+            ),
         })
 
     # ========================================================
@@ -469,7 +554,7 @@ def analyze_email_content(
             "description": (
                 "The message uses urgency or pressure to encourage "
                 "the recipient to act quickly."
-            )
+            ),
         })
 
     # ========================================================
@@ -490,6 +575,10 @@ def analyze_email_content(
         "amount due",
         "subscription payment",
         "payment failed",
+        "registration fee",
+        "processing fee",
+        "joining fee",
+        "training fee",
     ]
 
     payment_hits = [
@@ -507,7 +596,7 @@ def analyze_email_content(
             "description": (
                 "The email contains financial or payment-related "
                 "language that may require verification."
-            )
+            ),
         })
 
     # ========================================================
@@ -546,7 +635,7 @@ def analyze_email_content(
             "description": (
                 "The email contains job or internship language, "
                 "especially potentially suspicious fee or payment requests."
-            )
+            ),
         })
 
     # ========================================================
@@ -582,7 +671,7 @@ def analyze_email_content(
             "description": (
                 "The email claims that unusual or unauthorized "
                 "account activity has occurred."
-            )
+            ),
         })
 
     # ========================================================
@@ -610,13 +699,13 @@ def analyze_email_content(
 
         highest_link = max(
             suspicious_links,
-            key=lambda item: item["risk_score"]
+            key=lambda item: item["risk_score"],
         )
 
-        # Add controlled contribution to email risk.
+        # Controlled contribution to email risk.
         score += min(
             25,
-            round(highest_link["risk_score"] * 0.25)
+            round(highest_link["risk_score"] * 0.25),
         )
 
         flags.append({
@@ -624,7 +713,7 @@ def analyze_email_content(
             "description": (
                 f"Contains a link ({highest_link['url'][:100]}) "
                 f"pointing to an unverified or suspicious destination."
-            )
+            ),
         })
 
     # ========================================================
@@ -657,7 +746,7 @@ def analyze_email_content(
             "description": (
                 "The message asks the recipient to open or download "
                 "an attachment or document."
-            )
+            ),
         })
 
     # ========================================================
@@ -673,7 +762,7 @@ def analyze_email_content(
             "description": (
                 "The subject contains repeated exclamation marks "
                 "that may be intended to create urgency."
-            )
+            ),
         })
 
     # ========================================================
@@ -682,7 +771,7 @@ def analyze_email_content(
 
     score = min(
         100,
-        max(0, score)
+        max(0, score),
     )
 
     # ========================================================
@@ -769,7 +858,7 @@ def analyze_email_content(
             "No significant phishing, payment, credential, "
             "account takeover, or suspicious link indicators "
             "were detected. The email passes the current "
-            "Wardn safety checks."
+            "WARDN safety checks."
         )
 
     # ========================================================
